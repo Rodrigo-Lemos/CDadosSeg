@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" package="com.imgur.mobile" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:maxSdkVersion="22" android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE"/>
+        </intent>
+    </queries>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:name="com.imgur.mobile.ImgurApplication2" android:networkSecurityConfig="@xml/network_security_config" android:requestLegacyExternalStorage="true" android:supportsRtl="true" android:theme="@style/ImgurTheme" android:usesCleartextTraffic="true">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="@bool/branch_test"/>
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key"/>
+        <meta-data android:name="com.adsbynimbus.url" android:value="https://api.imgur.com/proxy/v1/nimbus/rta/v1"/>
+        <activity android:exported="true" android:name="com.imgur.mobile.gallery.feed.GridAndFeedActivity" android:theme="@style/ImgurTheme.NoActionBar.TransparentStatusBar" android:windowSoftInputMode="adjustPan"/>
+        <activity android:exported="true" android:name="com.imgur.mobile.newpostdetail.GridAndFeedNavActivity" android:theme="@style/ImgurTheme.NoActionBar.TransparentStatusBar" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.imgur.mobile.gallery.feed.feeddetail.FeedDetailActivity" android:theme="@style/ImgurTheme.NoActionBar.DarkGreenStatusBar.FeedDetail"/>
+        <activity android:name="com.imgur.mobile.gallery.inside.GalleryDetail2Activity" android:parentActivityName="com.imgur.mobile.gallery.feed.GridAndFeedActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.imgur.mobile.messaging.stream.ConversationActivity" android:theme="@style/ImgurTheme.Light.NoActionBar"/>
+        <activity android:label="@string/title_imgur_chat" android:name="com.imgur.mobile.messaging.UserSearchActivity" android:theme="@style/ImgurTheme.Messaging">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.imgur.mobile.messaging.muteuser.MutedUsersListActivity" android:theme="@style/ImgurTheme.Light.NoActionBar"/>
+        <activity android:name="com.imgur.mobile.messaging.stream.ConversationSettingsActivity" android:theme="@style/ImgurTheme.Light.NoActionBar"/>
+        <activity android:name="com.imgur.mobile.profile.ProfileActivity" android:theme="@style/ImgurTheme"/>
+        <activity android:name="com.imgur.mobile.profile.EditProfileActivity" android:theme="@style/ImgurTheme" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="com.imgur.mobile.profile.EditProfileImageActivity" android:theme="@style/ImgurTheme"/>
+        <activity android:name="com.imgur.mobile.profile.ChangePasswordActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:name="com.imgur.mobile.profile.ForgotPasswordActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:name="com.imgur.mobile.profile.DeleteAccountActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:name="com.imgur.mobile.util.UrlRouterActivity" android:theme="@style/Theme.Transparent" android:windowSoftInputMode="adjustPan">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="imgur.com" android:scheme="http"/>
+                <data android:host="imgur.com" android:scheme="https"/>
+                <data android:host="www.imgur.com" android:scheme="http"/>
+                <data android:host="www.imgur.com" android:scheme="https"/>
+                <data android:host="m.imgur.com" android:scheme="http"/>
+                <data android:host="m.imgur.com" android:scheme="https"/>
+                <data android:host="i.imgur.com" android:scheme="http"/>
+                <data android:host="i.imgur.com" android:scheme="https"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="*imgur.com" android:scheme="imgur"/>
+                <data android:host="*imgur.com" android:scheme="imgur-internal"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.imgur.mobile.common.ui.follower.FollowerTooltipActivity" android:theme="@style/ImgurTheme.NoActionBar.Translucent"/>
+        <activity android:name="com.imgur.mobile.lightbox.LightboxActivity" android:theme="@style/ImgurTheme.NoActionBar.Lightbox"/>
+        <activity android:name="com.imgur.mobile.common.ui.webview.WebViewActivity" android:theme="@style/ImgurTheme.NoActionBar"/>
+        <activity android:name="com.imgur.mobile.settings.SettingsActivity" android:parentActivityName="com.imgur.mobile.gallery.feed.GridAndFeedActivity" android:screenOrientation="portrait" android:theme="@style/ImgurLight.DarkActionBar"/>
+        <activity android:label="@string/title_activity_notifications" android:name="com.imgur.mobile.notifications.NotificationsActivity" android:parentActivityName="com.imgur.mobile.gallery.feed.GridAndFeedActivity" android:theme="@style/ImgurTheme.NoActionBar.TransparentStatusBar"/>
+        <activity android:name="com.imgur.mobile.UpdateRequiredActivity"/>
+        <activity android:name="com.imgur.mobile.gallery.inside.ReportReasonsActivity"/>
+        <activity android:name="com.imgur.mobile.messaging.ReportUserActivity"/>
+        <activity android:name="com.imgur.mobile.gallery.comments.CommentsActivity"/>
+        <activity android:name="com.imgur.mobile.gallery.comments.ComposeCommentDialogActivity" android:theme="@style/ImgurTheme.NoActionBar.Translucent" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="com.imgur.mobile.gallery.comments.reactions.ReactionsPickerActivity" android:theme="@style/ImgurTheme.NoActionBar.ReactionsPickerActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name="com.imgur.mobile.common.ui.view.picker.PostPickerActivity"/>
+        <activity android:name="com.imgur.mobile.creation.picker.presentation.AssetPickerActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme.NoActionBar.TranslucentCreation"/>
+        <activity android:name="com.imgur.mobile.creation.reorder.ReorderActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme.NoActionBar.TranslucentCreation"/>
+        <activity android:launchMode="singleTask" android:name="com.imgur.mobile.creation.preview.PreviewPostActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme.PreviewAndEditPost" android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="video/mp4"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="video/mp4"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.imgur.mobile.creation.UploadFailureActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme.NoActionBar.Translucent.TakeOver"/>
+        <activity android:name="com.imgur.mobile.creation.tags.TagSelectionActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme.Light.NoActionBar" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:launchMode="singleTop" android:name="com.imgur.mobile.loginreg.Login2Activity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme.NoActionBar.Login" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="com.imgur.mobile.loginreg.ThirdPartyLoginActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme.NoActionBar.Login" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="com.appboy.ui.AppboyWebViewActivity" android:theme="@android:style/Theme"/>
+        <activity android:name="com.imgur.mobile.common.ui.tags.PostGridActivity" android:theme="@style/ImgurTheme"/>
+        <activity android:name="com.imgur.mobile.loginreg.tutorial.OnboardingActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme.NoActionBar.Onboarding"/>
+        <activity android:launchMode="singleTop" android:name="com.imgur.mobile.MainActivity" android:screenOrientation="portrait" android:theme="@style/ImgurTheme.NoActionBar.Onboarding"/>
+        <activity-alias android:name="com.imgur.mobile.Launcher" android:targetActivity="com.imgur.mobile.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+        </activity-alias>
+        <activity android:name="com.imgur.mobile.feed.explorefeed.ExploreActivity" android:theme="@style/ImgurTheme.NoActionBar.TransparentStatusBar" android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="com.google.android.gms.actions.SEARCH_ACTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:launchMode="singleInstance" android:name="com.imgur.mobile.favoritefolder.FavoriteFolderPreviewActivity" android:theme="@style/ImgurTheme.Light.NoActionBar" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:name="com.imgur.mobile.favoritefolder.gridedit.multiselectgallery.MultiSelectFavoriteGalleryActivity" android:theme="@style/ImgurTheme.NoActionBar"/>
+        <activity android:name="com.imgur.mobile.snacks.snackpack.view.SnackpackActivity" android:theme="@style/ImgurTheme.NoActionBar.Snacks"/>
+        <activity android:launchMode="singleInstance" android:name="com.imgur.mobile.favoritefolder.FavoriteFolderListActivity" android:theme="@style/ImgurTheme.NoActionBar"/>
+        <activity android:name="com.imgur.mobile.common.ui.share.ShareActionsActivity" android:theme="@style/ImgurTheme.NoActionBar.Translucent.TakeOver"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MoPubActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MraidActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.common.MoPubBrowser"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MraidVideoPlayerActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.RewardedMraidActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:name="com.google.android.gms.ads.AdActivity" android:theme="@android:style/Theme.Translucent"/>
+        <provider android:authorities="com.imgur.mobile.MediaContentProvider" android:exported="false" android:grantUriPermissions="true" android:name="com.millennialmedia.internal.utils.MediaContentProvider"/>
+        <service android:name="com.imgur.mobile.engine.file.download.FileDownloadJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="com.imgur.mobile"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.imgur.mobile.creation.upload.UploadTaskService"/>
+        <service android:name="com.imgur.mobile.notifications.NotificationsCountService"/>
+        <service android:exported="false" android:name="com.imgur.mobile.common.ui.clipboard.ClipboardHelperService"/>
+        <receiver android:name="com.imgur.mobile.notifications.AppboyBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.imgur.mobile.intent.APPBOY_PUSH_RECEIVED"/>
+                <action android:name="com.imgur.mobile.intent.APPBOY_NOTIFICATION_OPENED"/>
+                <category android:name="com.imgur.mobile"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="false" android:name="com.imgur.mobile.notifications.EmeraldIntentBackgroundReceiver">
+            <intent-filter android:priority="1">
+                <action android:name="com.imgur.mobile.intent.INTENT_ACTION_EMERALD_GIFT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.appboy.AppboyFcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.imgur.mobile"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsService"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsReceiver">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.appsflyer.MultipleInstallBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.imgur.mobile.notifications.ImgurFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.imgur.mobile.notifications.ImgurFirebaseService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver android:enabled="true" android:exported="false" android:name="com.imgur.mobile.common.ui.share.ShareBroadcastReceiver"/>
+        <provider android:authorities="@string/imgur_reactions_file_provider_authority" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:label="@string/app_name" android:name="com.facebook.FacebookActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:name="com.flurry.android.FlurryFullscreenTakeoverActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.common.privacy.ConsentDialogActivity"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.crashlytics.ApiKey" android:value="dae1edd8ad20bdf63d1de739c1227ffd1a166f97"/>
+        <meta-data android:name="com.imgur.mobile.common.ui.imageloader.ImgurGlideModule" android:value="GlideModule"/>
+        <meta-data android:name="AA_DB_NAME" android:value="imgur.db"/>
+        <meta-data android:name="AA_DB_VERSION" android:value="20"/>
+        <meta-data android:name="asset_statements" android:resource="@string/asset_statements"/>
+        <activity android:name="com.getstream.sdk.chat.view.activity.UsersActivity"/>
+        <activity android:name="com.getstream.sdk.chat.view.activity.AttachmentMediaActivity"/>
+        <activity android:name="com.getstream.sdk.chat.view.activity.AttachmentDocumentActivity"/>
+        <activity android:name="com.getstream.sdk.chat.view.activity.AttachmentActivity"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize" android:name="com.smartadserver.android.library.ui.SASInterstitialActivity" android:theme="@style/SASInterstitialActivityTheme"/>
+        <provider android:authorities="com.imgur.mobile.smartadserver.transparencyreport" android:exported="false" android:grantUriPermissions="true" android:name="com.smartadserver.android.library.util.SASTransparencyReport$FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths_smartadserver"/>
+        </provider>
+        <activity android:name="com.facebook.CustomTabMainActivity"/>
+        <activity android:exported="true" android:name="com.facebook.CustomTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="cct.com.imgur.mobile" android:scheme="fbconnect"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:hardwareAccelerated="true" android:name="com.fyber.inneractive.sdk.activities.InneractiveInternalBrowserActivity" android:screenOrientation="fullUser"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:hardwareAccelerated="true" android:name="com.fyber.inneractive.sdk.activities.InneractiveFullscreenAdActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:hardwareAccelerated="true" android:name="com.fyber.inneractive.sdk.activities.InneractiveRichMediaVideoPlayerActivityCore" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.fyber.inneractive.sdk.video.IAVideoKit">
+            <intent-filter>
+                <action android:name="com.fyber.inneractive.sdk.intent.action.REGISTER_KIT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="false" android:name="com.fyber.inneractive.sdk.mraid.IAMraidKit">
+            <intent-filter>
+                <action android:name="com.fyber.inneractive.sdk.intent.action.REGISTER_KIT"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.imgur.mobile.firebaseperfprovider" android:exported="false" android:initOrder="101" android:name="com.google.firebase.perf.provider.FirebasePerfProvider"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.perf.FirebasePerfRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.ktx.FirebaseCrashlyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.remoteconfig.RemoteConfigRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.abt.component.AbtRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <activity android:label="OtherName" android:name="com.quantcast.measurement.service.AboutQuantcastScreen"/>
+        <activity android:name="com.appboy.ui.activities.AppboyFeedActivity"/>
+        <activity android:name="com.appboy.ui.activities.AppboyContentCardsActivity"/>
+        <activity android:name="com.appboy.push.AppboyNotificationRoutingActivity"/>
+        <meta-data android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule" android:value="GlideModule"/>
+        <provider android:authorities="com.imgur.mobile.com.squareup.picasso" android:exported="false" android:name="com.squareup.picasso.PicassoProvider"/>
+        <activity android:exported="false" android:name="com.amazon.device.ads.DTBActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="intent" android:scheme="amazonmobile"/>
+            </intent-filter>
+        </activity>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.analytics.AnalyticsJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.facebook.ads.AudienceNetworkActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="com.imgur.mobile.AudienceNetworkContentProvider" android:exported="false" android:name="com.facebook.ads.AudienceNetworkContentProvider"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <provider android:authorities="com.imgur.mobile.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <provider android:authorities="com.imgur.mobile.MarketingInitProvider" android:exported="false" android:name="com.facebook.marketing.internal.MarketingInitProvider"/>
+        <provider android:authorities="com.imgur.mobile.FacebookInitProvider" android:exported="false" android:name="com.facebook.internal.FacebookInitProvider"/>
+        <receiver android:exported="false" android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.imgur.mobile.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <service android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+        <activity android:name="com.jakewharton.processphoenix.ProcessPhoenix" android:process=":phoenix" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="layoutDirection|locale" android:label="@string/mmadsdk_app_name" android:name="com.millennialmedia.internal.MMActivity" android:theme="@style/Theme.MMTransparent"/>
+        <activity android:configChanges="layoutDirection|locale" android:label="sdk" android:name="com.millennialmedia.internal.MMIntentWrapperActivity"/>
+        <service android:exported="false" android:name="com.millennialmedia.internal.VolumeChangeService"/>
+        <meta-data android:name="com.bumptech.glide.integration.webp.WebpGlideModule" android:value="GlideModule"/>
+        <activity android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:hardwareAccelerated="true" android:name="com.inmobi.ads.rendering.InMobiAdActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:configChanges="orientation|screenSize" android:name="com.criteo.publisher.CriteoInterstitialActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:name="net.pubnative.lite.sdk.consent.UserConsentActivity"/>
+        <activity android:name="net.pubnative.lite.sdk.interstitial.activity.MraidInterstitialActivity"/>
+        <activity android:name="net.pubnative.lite.sdk.interstitial.activity.VastInterstitialActivity"/>
+        <receiver android:enabled="true" android:exported="true" android:name="com.appboy.receivers.AppboyActionReceiver"/>
+        <meta-data android:name="com.huawei.hms.client.service.name:ads-identifier" android:value="ads-identifier:3.4.28.305"/>
+        <meta-data android:name="com.huawei.hms.client.service.name:location" android:value="location:4.0.2.300"/>
+        <meta-data android:name="com.huawei.hms.min_api_level:location:location" android:value="1"/>
+        <meta-data android:name="com.huawei.hms.client.service.name:base" android:value="base:4.0.2.300"/>
+        <meta-data android:name="com.huawei.hms.min_api_level:base:hmscore" android:value="1"/>
+        <activity android:configChanges="fontScale|layoutDirection|locale|orientation|screenLayout|screenSize|smallestScreenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.huawei.hms.activity.BridgeActivity" android:theme="@android:style/Theme.Translucent">
+            <meta-data android:name="hwc-theme" android:value="androidhwext:style/Theme.Emui.Translucent"/>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:name="com.huawei.hms.activity.EnableServiceActivity"/>
+        <provider android:authorities="com.imgur.mobile.hms.update.provider" android:exported="false" android:grantUriPermissions="true" android:name="com.huawei.hms.update.provider.UpdateProvider"/>
+        <provider android:authorities="com.imgur.mobile.AGCInitializeProvider" android:exported="false" android:name="com.huawei.agconnect.core.provider.AGConnectInitializeProvider"/>
+        <service android:exported="false" android:name="com.huawei.agconnect.core.ServiceDiscovery"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.huawei.updatesdk.service.otaupdate.AppUpdateActivity" android:theme="@style/upsdkDlDialog">
+            <meta-data android:name="hwc-theme" android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar"/>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.huawei.updatesdk.support.pm.PackageInstallerActivity" android:theme="@style/upsdkDlDialog">
+            <meta-data android:name="hwc-theme" android:value="androidhwext:style/Theme.Emui.Translucent"/>
+        </activity>
+    </application>
+</manifest>

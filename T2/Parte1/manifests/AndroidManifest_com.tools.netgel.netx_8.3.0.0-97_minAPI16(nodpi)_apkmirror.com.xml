@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" package="com.tools.netgel.netx" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <application android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:icon="@mipmap/netx" android:label="@string/app_base_name" android:largeHeap="true" android:requestLegacyExternalStorage="true" android:roundIcon="@mipmap/netx_round" android:supportsRtl="true" android:theme="@style/AppTheme" android:usesCleartextTraffic="true">
+        <activity android:label="@string/app_base_name" android:name="com.tools.netgel.netx.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.tools.netgel.netx.SplashActivity"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/app_base_name" android:name="com.tools.netgel.netx.MainActivity"/>
+        <activity android:name="com.tools.netgel.netx.BaseDrawerFragmentActivity"/>
+        <activity android:name="com.tools.netgel.netx.BaseFragmentActivity"/>
+        <activity android:label="@string/settings" android:name="com.tools.netgel.netx.SettingsActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:label="@string/about" android:name="com.tools.netgel.netx.AboutActivity"/>
+        <activity android:label="@string/networkInfo" android:name="com.tools.netgel.netx.NetworkInfoActivity">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/wifiScan" android:name="com.tools.netgel.netx.WifiNetworksActivity">
+            <intent-filter>
+                <action android:name="android.net.wifi.SCAN_RESULTS"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="Ping" android:name="com.tools.netgel.netx.PingActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:label="Port Scan" android:name="com.tools.netgel.netx.PortScanActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:label="@string/port_scan" android:name="com.tools.netgel.netx.PortSettingsActivity"/>
+        <activity android:label="Choose File" android:name="com.tools.netgel.netx.FileExplorerActivity"/>
+        <service android:name="com.tools.netgel.netx.services.NetworkMonitorService"/>
+        <activity android:label="Web" android:name="com.tools.netgel.netx.WebActivity"/>
+        <activity android:name="com.tools.netgel.netx.NetworkToolsActivity"/>
+    </application>
+</manifest>
